@@ -1,6 +1,6 @@
 # SciMaster: Система управления научно-исследовательскими и опытно-конструкторскими работами
 
-![SciMaster](https://github.com/Hildbjorn/SciMaster/blob/main/src/static/img/elements/sci_masters.webp?raw=true)
+![SciMaster](https://github.com/Hildbjorn/SciMaster/blob/main/src/static/img/elements/rnd.webp?raw=true)
 
 ## 🎯 Назначение системы
 
