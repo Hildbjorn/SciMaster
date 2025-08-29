@@ -1,0 +1,47 @@
+{% load static %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+  <div class="hero__body">
+    <div class="container placeholder__block"></div>
+    <div class="container p-0">
+      <div class="row mx-auto px-0">
+        <div class="col-12 col-xl-6 order-2 order-xl-1 d-flex flex-column justify-content-center text-center text-xl-start pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="200">
+          <h1 class="mb-5 mb-md-3">Бизнес-Модель PRO</h1>
+          <h2 class="mb-5">Инструмент моделирования и&nbsp;оценки&nbsp;проектов</h2>
+          <div class="mx-auto mx-xl-0 mb-3">
+            <div class="row text-start mb-3 ps-1">
+              <div class="col-1">
+                <i class="bi bi-check2-square text-warning fs-5 pe-2"></i>
+              </div>
+              <div class="col-11 text-light">Упрощает процесс и&nbsp;повышает эффективность</div>
+            </div>
+            <div class="row text-start mb-3 ps-1">
+              <div class="col-1">
+                <i class="bi bi-check2-square text-warning fs-5 pe-2"></i>
+              </div>
+              <div class="col-11 text-light">Поддерживает на&nbsp;каждом этапе планирования</div>
+            </div>
+            <div class="row text-start mb-3 ps-1">
+              <div class="col-1">
+                <i class="bi bi-check2-square text-warning fs-5 pe-2"></i>
+              </div>
+              <div class="col-11 text-light">Сокращает путь от&nbsp;идеи до&nbsp;зрелого бизнеса</div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center justify-content-xl-start row gap-4">
+            <h2 class="text-warning fs-1 mb-5"><i class="bi bi-lightbulb pe-3"></i>Идея воплощается...</h2>
+          </div>
+        </div>
+        <div class="hero-img col-12 col-xl-6 order-1 order-xl-2 text-center text-xl-end mb-5 mb-xl-0" data-aos="zoom-in" data-aos-delay="200">
+          <img class="img-fluid w-75" src="{% static 'img/elements/logo_domino.webp' %}" alt="Домино" />
+        </div>
+      </div>
+    </div>
+    <!-- ======= Statistics block ======= -->
+    {% comment %} {% include 'home/components/statistics.html' %} {% endcomment %}
+    <!-- ==== End of Statistics block === -->
+    <div class="container placeholder__block"></div>
+  </div>
+</section>
+<!-- ===== End of Hero Section ===== -->

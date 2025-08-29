@@ -1,0 +1,125 @@
+{% load static %}
+{% load common_tags %}
+
+<!-- Информация о подписке -->
+<div class="tab-pane fade {% if active_tab == 'subscription' %}show active{% endif %} my-3" id="nav-subscription" role="tabpanel" aria-labelledby="nav-subscription-tab">
+  <div class="row">
+    <div class="col-12">
+      <div class="card border-0 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-2">
+            <h5 class="fw-bold mb-0">Ваша подписка</h5>
+            {% if subscription %}
+              <span class="badge 
+                {% if subscription.status == 'active' %}
+                  
+                  bg-success
+
+                {% elif subscription.status == 'expired' %}
+                  
+                  bg-danger
+
+                {% else %}
+                  
+                  bg-warning
+
+                {% endif %}">
+                {{ subscription.get_status_display }}
+              </span>
+            {% endif %}
+          </div>
+
+          {% if subscription %}
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <div class="d-flex align-items-start mb-3">
+                  <i class="bi bi-credit-card fs-5 me-3 text-primary"></i>
+                  <div>
+                    <div class="text-muted small">Тариф:</div>
+                    <div class="badge bg-light text-dark text-start border fw-bold fs-5 mt-1">{{ subscription.tariff }}</div>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-start mb-2">
+                  <i class="bi bi-calendar-check fs-5 me-3 text-primary"></i>
+                  <div>
+                    <div class="text-muted small">Действует до:</div>
+                    <div class="badge bg-light text-dark text-start border fw-bold fs-5 mt-1">{{ subscription.end_date|date:'d.m.Y' }}</div>
+                  </div>
+                </div>
+
+                {% if subscription.status == 'pending_downgrade' and subscription.next_tariff %}
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-arrow-down-right fs-5 me-3 text-warning"></i>
+                    <div>
+                      <div class="text-muted small">Переход на</div>
+                      <div class="fw-bold">{{ subscription.next_tariff.tariff }}</div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="col-md-6 mt-3 mt-md-0">
+                <div class="text-muted small mb-2">Включенные опции:</div>
+                <div class="d-flex flex-column flex-wrap gap-2">
+                  {% for option in subscription.tariff.options.all %}
+                    <span class="badge bg-light text-dark text-start border">
+                      <i class="bi bi-check-circle me-1 text-success"></i>
+                      {{ option|safe }}
+                    </span>
+                  {% empty %}
+                    <span class="text-muted">Нет доступных опций</span>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <div class="text-center py-4">
+              <i class="bi bi-credit-card fs-1 text-muted mb-3"></i>
+              <p class="fw-medium">Нет активной подписки</p>
+              <p class="text-muted small mb-0">Выберите подходящий тариф, чтобы получить доступ ко всем возможностям</p>
+            </div>
+          {% endif %}
+
+          <div class="mt-4 pt-3 border-top">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+              {% if subscription %}
+                {% if subscription.status == 'active' %}
+                  {% if subscription.tariff.slug != 'tariff_test_drive' %}
+                    <div class="fw-medium">Продлить подписку:</div>
+                    <div class="d-flex flex-wrap gap-2">
+                      <a href="{% url 'subscription_update' slug=subscription.tariff.slug period='month' %}" class="btn btn-sm btn-outline-primary"><i class="bi bi-calendar3 me-2"></i>На месяц</a>
+                      <a href="{% url 'subscription_update' slug=subscription.tariff.slug period='year' %}" class="btn btn-sm btn-primary"><i class="bi bi-calendar-check me-2"></i>На год</a>
+                    </div>
+                  {% else %}
+                    <div class="fw-medium">Тестовый период завершен</div>
+                    <a href="{% url 'index' %}#tariffs" class="btn btn-sm btn-success"><i class="bi bi-receipt me-1"></i>Выбрать тариф</a>
+                  {% endif %}
+                {% else %}
+                  <div class="fw-medium">
+                    {% if subscription.status == 'expired' %}
+                      Подписка истекла
+                    {% else %}
+                      Нет активной подписки
+                    {% endif %}
+                  </div>
+                  <a href="{% url 'index' %}#tariffs" class="btn btn-sm btn-success"><i class="bi bi-receipt me-1"></i>Выбрать тариф</a>
+                {% endif %}
+              {% else %}
+                <div class="fw-medium">Активная подписка отсутствует</div>
+                <a href="{% url 'index' %}#tariffs" class="btn btn-sm btn-success"><i class="bi bi-receipt me-1"></i>Выбрать тариф</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- История транзакций -->
+  <div class="row mt-4">
+    <div class="col-12">
+      {% comment %} {% include 'billing/transactions.html' %} {% endcomment %}
+    </div>
+  </div>
+</div>

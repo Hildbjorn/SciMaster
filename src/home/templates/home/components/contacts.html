@@ -1,0 +1,48 @@
+{% load static %}
+
+<!-- ======== Contacts Section ========= -->
+<section id="contacts" class="py-5 bg-body-tertiary">
+  <div class="container py-3 py-lg-5">
+    <h2 class="text-center mb-5">Контакты</h2>
+    <h4 class="text-center mb-5">Выберите предпочтительный способ общения</h4>
+
+    <div class="row mx-auto px-0">
+      <div class="about_author col-lg-6 d-flex flex-column order-1 order-lg-1">
+        <h5 class="text-center text-md-start my-3"><strong>Каналы связи:</strong></h5>
+        <div class="social-links d-flex flex-row justify-content-center justify-content-md-start mt-3 gap-3">
+          <a href="https://b-model.pro" class="text-decoration-none fs-2" target="_blank"><i class="bi bi-globe"></i></a>
+          <a href="https://t.me/b_model_pro" class="text-decoration-none fs-2" target="_blank"><i class="bi bi-telegram"></i></a>
+          <a href="https://wa.me/79778076868" class="text-decoration-none fs-2" target="_blank"><i class="bi bi-whatsapp"></i></a>
+          <a href="mailto:a.v.fomin@b-model.pro?subject=Обратная связь по приложению &laquo;Бизнес-Модель PRO&raquo;&amp;body=Добрый%20день!" class="text-decoration-none fs-2" target="_blank"><i class="bi bi-envelope-at"></i></a>
+          <a href="https://vk.com/artem_v_fomin" class="text-decoration-none fs-2" target="_blank"><i class="bi bi-person-workspace fs-2"></i></a>
+        </div>
+        <p class="mt-4">
+          <strong>Дополнительные услуги:</strong>
+        </p>
+        <ul>
+          <li>Бизнес-моделирование</li>
+          <li>Стратегическое пларинование</li>
+          <li>Инвестиционное планирование</li>
+          <li>Привлечение финансирования</li>
+        </ul>
+        <p class="mt-3">
+          <strong>Юридическая информация:</strong>
+        </p>
+        <p class="fs-6">
+          <a href="{% url 'serve_documents' 'User_Agreement.pdf' %}" target="_blank"><i class="bi bi-file-text me-2"></i>Пользовательское соглашение</a>
+          <br />
+          <a href="{% url 'serve_documents' 'Privacy_Policy.pdf' %}" target="_blank"><i class="bi bi-file-text me-2"></i>Политика конфиденциальности</a>
+          <br />
+          <a href="{% url 'serve_documents' 'Consent_to_Data_processing_and_Advertising.pdf' %}" target="_blank"><i class="bi bi-file-text me-2"></i>Соглашение на&nbsp;получение рекламы и&nbsp;обработку персональных данных</a>
+        </p>
+      </div>
+      <div class="col-lg-1 order-3 order-lg-2"></div>
+      <div class="col-lg-5 order-2 order-lg-3">
+        <h5 class="text-center text-md-start mt-5 mt-lg-3 mb-3"><strong>Будем признательны за&nbsp;обратную связь...</strong></h5>
+        <!-- Feedback Form -->
+        {% comment %} {% include 'feedback/components/feedback_form.html' %} {% endcomment %}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== End of Contacts Section ===== -->

@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+  Бизнес-Модель PRO - Удобный и мощный инструмент для самостоятельного моделирования и оценки проектов
+{% endblock %}
+
+<!-- META TAGS -->
+{% block meta_tags %}
+  {% include 'layout/components/meta_tags.html' %}
+{% endblock %}
+
+{% block content %}
+  <!-- Hero -->
+  {% include 'home/components/hero.html' %}
+
+  <!-- Tariffs -->
+  {% comment %} {% include 'billing/components/tariffs.html' %} {% endcomment %}
+
+  <!-- About -->
+  {% include 'home/components/about.html' %}
+
+  <!-- Feedbacks -->
+  {% comment %} {% include 'feedback/components/feedbacks.html' %} {% endcomment %}
+
+  <!-- Contacts -->
+  {% comment %} {% include 'home/components/contacts.html' %} {% endcomment %}
+{% endblock %}

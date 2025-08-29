@@ -1,0 +1,131 @@
+{% load static %}
+{% load common_tags %}
+
+<div class="tab-pane fade {% if active_tab == 'profile' %}show active{% endif %} my-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+  <div class="form-control bg-body-tertiary p-3 p-md-4">
+    <form action="{{ action }}" id="profile_form" method="POST" enctype="multipart/form-data" class="form">
+      {% csrf_token %}
+      <div class="profile_container row mb-3">
+        <!-- Аватар -->
+        <div class="col-12 col-md-3 mb-4 mb-md-0 d-flex flex-column align-items-center">
+          <div id="image_preview" class="image w-100 d-flex flex-column" style="height: 100%;">
+            <label for="image_field" class="form-label d-flex flex-column justify-content-between align-items-center" style="flex-grow: 1;">
+              {% include 'users/components/avatar.html' with custom_class='img-fluid rounded-circle mb-3' %}
+              <div class="btn btn-sm btn-outline-primary w-100 mt-auto">
+                <i class="bi bi-camera pe-2"></i>Изменить фото
+              </div>
+            </label>
+            {{ form.image }}
+          </div>
+        </div>
+
+        <!-- Основные данные -->
+        <div class="col-12 col-md-9">
+          <div class="row g-3">
+            <!-- Личные данные -->
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-light-subtle">
+                  <h6 class="fw-bold mb-0">Личные данные</h6>
+                </div>
+                <div class="card-body">
+                  <!-- Псевдоним -->
+                  <div class="mb-3">
+                    <label class="form-label text-muted small mb-1"><i class="bi bi-at me-2 text-primary"></i>{{ form.nic_name.label }}</label>
+                    {{ form.nic_name }}
+                  </div>
+
+                  <!-- Фамилия -->
+                  <div class="mb-3">
+                    <label class="form-label text-muted small mb-1"><i class="bi bi-people me-2 text-primary"></i>{{ form.last_name.label }}</label>
+                    {{ form.last_name }}
+                  </div>
+
+                  <!-- Имя -->
+                  <div class="mb-3">
+                    <label class="form-label text-muted small mb-1"><i class="bi bi-person me-2 text-primary"></i>{{ form.first_name.label }}</label>
+                    {{ form.first_name }}
+                  </div>
+
+                  <!-- Отчество -->
+                  <div>
+                    <label class="form-label text-muted small mb-1"><i class="bi bi-person-up me-2 text-primary"></i>{{ form.middle_name.label }}</label>
+                    {{ form.middle_name }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Контакты и работа -->
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-light-subtle">
+                  <h6 class="fw-bold mb-0">Контакты и работа</h6>
+                </div>
+                <div class="card-body">
+                  <!-- E-mail -->
+                  <div class="mb-3">
+                    <label class="form-label text-muted small mb-1"><i class="bi bi-envelope-at me-2 text-primary"></i>{{ form.email.label }}</label>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                  </div>
+
+                  <!-- Телефон -->
+                  <div class="mb-4">
+                    <label class="form-label text-muted small mb-1"><i class="bi bi-telephone me-2 text-primary"></i>{{ form.phone.label }}</label>
+                    {{ form.phone }}
+                  </div>
+
+                  <!-- Должность -->
+                  <div class="mb-3">
+                    <label class="form-label text-muted small mb-1"><i class="bi bi-diagram-3 me-2 text-primary"></i>{{ form.position.label }}</label>
+                    {{ form.position }}
+                  </div>
+
+                  <!-- Организация -->
+                  <div>
+                    <label class="form-label text-muted small mb-1"><i class="bi bi-buildings me-2 text-primary"></i>{{ form.company.label }}</label>
+                    {{ form.company }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-4" />
+
+      <div class="row mt-3">
+        <div class="col-md-10 mb-3 mb-md-0">
+          <!-- Соглашения -->
+          <div class="card border-0">
+            <div class="card-body p-3">
+              <div class="agreement form-check form-switch mb-3">
+                {{ form.agreement }}
+                <label class="form-check-label" for="agreement">Согласие с&nbsp;документами:</label>
+                <ul class="mt-2 mb-0">
+                  <li>
+                    <a href="{% url 'user_agreement' %}" class="text-decoration-none"><i class="bi bi-file-text me-2"></i>Пользовательское&nbsp;соглашение</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'serve_documents' 'Privacy_Policy.pdf' %}" target="_blank" class="text-decoration-none"><i class="bi bi-file-text me-2"></i>Политика конфиденциальности</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-2 d-flex flex-column justify-content-end align-items-end">
+          <div class="d-flex w-100 justify-content-end">
+            {% if request.user.is_authenticated and not user.is_superuser %}
+              <button type="button" class="btn btn-outline-danger me-2" hx-post="{% url 'profile_delete_confirmation' %}" hx-target="#modal-content" hx-trigger="click" data-bs-toggle="modal" data-bs-target="#modal"><i class="bi bi-trash"></i> Удалить</button>
+            {% endif %}
+            <button type="submit" class="btn btn-primary"><i class="bi bi-save me-2"></i>Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
