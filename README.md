@@ -269,7 +269,7 @@ graph TD
 
 ```mermaid
 flowchart TD
-    A[Главная страница / Дашборд] --> B[Список проектов]
+    A[Главная страница] --> B[Список проектов]
     A --> C[Список исполнителей]
     A --> D[Календарь работ]
     A --> E[Отчеты]
@@ -332,15 +332,24 @@ flowchart TD
     AK --> AP[Экспорт в Word]
     AL --> AQ[Экспорт Form2.docx]
     
-    style A fill:#e1f5fe
-    style G fill:#fff3e0
-    style M fill:#f3e5f5
-    style Q fill:#e8f5e8
-    style U fill:#ffebee
-    style X fill:#f1f8e9
-    style J fill:#fff8e1
-    style E fill:#eceff1
-    style CA fill:#e8f5e8
+    classDef default fill:#ffffff,stroke:#6c757d,stroke-width:2px,color:#212529
+    classDef dashboard fill:#e3f2fd,stroke:#0d6efd,stroke-width:2px,color:#212529
+    classDef project fill:#d4edda,stroke:#198754,stroke-width:2px,color:#212529
+    classDef stage fill:#e2d9f3,stroke:#6f42c1,stroke-width:2px,color:#212529
+    classDef task fill:#fff3e0,stroke:#fd7e14,stroke-width:2px,color:#212529
+    classDef employee fill:#d1ecf1,stroke:#20c997,stroke-width:2px,color:#212529
+    classDef contractor fill:#fff8e1,stroke:#ffc107,stroke-width:2px,color:#212529
+    classDef report fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,color:#212529
+    classDef cost fill:#d1e7dd,stroke:#198754,stroke-width:2px,color:#212529
+    
+    class A dashboard
+    class B,G project
+    class H,M stage
+    class U task
+    class X employee
+    class J contractor
+    class E report
+    class CA cost
 ```
 
 ## ❓ Часто задаваемые вопросы

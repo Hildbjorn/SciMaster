@@ -168,7 +168,7 @@ class ProfileUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return self.user
 
     def get_template_names(self, **kwargs):
-        if self.active_tab in ['profile', 'projects', 'subscription']:
+        if self.active_tab in ['profile', 'projects']:
             template_name = 'users/profile.html'
         else:
             template_name = 'layout/404.html'
