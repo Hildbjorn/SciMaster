@@ -1,0 +1,21 @@
+{% load static %}
+{% load widget_tweaks %}
+{% load common_tags %}
+
+<div class="modal-header rounded-top ps-xl-4">
+  <h3 class="modal-title align-middle" id="staticBackdropLabel">
+    <i class="bi bi-shield-lock me-3"></i>Политика конфиденциальности
+  </h3>
+  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+</div>
+<div class="modal-body ps-xl-4">
+  <div class="justify-content-start">
+    <!-- Основной текст политики -->
+    {% include 'home/components/documents/privacy_policy/privacy_policy_content.html' %}
+    <!-- ===== -->
+  </div>
+</div>
+<div class="modal-footer rounded-bottom ps-xl-4">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i
+      class="bi bi-x-circle me-1"></i>Закрыть</button>
+</div>

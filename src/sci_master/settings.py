@@ -211,7 +211,7 @@ EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = 'Бизнес-Модель PRO <info@b-model.pro>'
+DEFAULT_FROM_EMAIL = 'SciMaster <info@b-model.pro>'
 EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', '').lower() in ['true', '1', 'yes']
 EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', '').lower() in ['true', '1', 'yes']
 

@@ -106,10 +106,10 @@
                 <label class="form-check-label" for="agreement">Согласие с&nbsp;документами:</label>
                 <ul class="mt-2 mb-0">
                   <li>
-                    <a href="{% url 'user_agreement' %}" class="text-decoration-none"><i class="bi bi-file-text me-2"></i>Пользовательское&nbsp;соглашение</a>
+                    <a href="{% url 'user_agreement' %}" class="text-decoration-none" hx-get="{% url 'user_agreement_modal' %}" hx-target="#largeModal-content" hx-trigger="click" data-bs-toggle="modal" data-bs-target="#largeModal"><i class="bi bi-file-text me-2"></i>Пользовательское&nbsp;соглашение</a>
                   </li>
                   <li>
-                    <a href="{% url 'serve_documents' 'Privacy_Policy.pdf' %}" target="_blank" class="text-decoration-none"><i class="bi bi-file-text me-2"></i>Политика конфиденциальности</a>
+                    <a href="{% url 'user_agreement' %}" class="text-decoration-none" hx-get="{% url 'privacy_policy_modal' %}" hx-target="#largeModal-content" hx-trigger="click" data-bs-toggle="modal" data-bs-target="#largeModal"><i class="bi bi-file-text me-2"></i>Политика&nbsp;конфиденциальности</a>
                   </li>
                 </ul>
               </div>

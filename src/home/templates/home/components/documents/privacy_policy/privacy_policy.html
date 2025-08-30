@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+SciMaster - Политика конфиденциальности
+{% endblock %}
+
+<!-- META TAGS -->
+{% block meta_tags %}
+{% include 'layout/components/meta_tags.html' %}
+{% endblock %}
+
+{% block content %}
+<section id="user_agreement" class="py-5">
+  <div class="container">
+    <h1 class="text-center mb-5">Политика конфиденциальности</h1>
+    <!-- Основной текст политики -->
+    {% include 'home/components/documents/privacy_policy/privacy_policy_content.html' %}
+    <!-- ===== -->
+  </div>
+</section>
+{% endblock %}

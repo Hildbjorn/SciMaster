@@ -20,9 +20,13 @@
         {% for user in all_users %}
           <div class="col-12 col-md-6 col-lg-4 col-xl-3 p-3">
             <div class="user_card d-flex flex-column h-100 {% if user.is_active == False %}
+                
                 bg-danger-subtle
+
               {% else %}
+                
                 border border-1 border-secondary
+
               {% endif %} {% if request.user.is_authenticated and user.is_superuser %}bg-secondary{% endif %} rounded-3 shadow-sm">
               <div class="user_card_header text-center p-3">
                 <a href="{% url 'admin:index' %}users/profile/{{ user.id }}/change/" target="_blank" class="text-decoration-none">{% include 'users/components/avatar.html' with custom_class='img-fluid w-50 rounded-circle shadow-sm' %}</a>
@@ -51,7 +55,7 @@
                 <hr class="mx-3 mb-0 px-3 pb-3" />
                 <div class="d-flex flex-row justify-content-around align-items-center px-3 pb-3">
                   {% if user.email %}
-                    <a href="mailto:{{ user.email }}?subject=Запрос от сервиса &laquo;Бизнес-Модель PRO&raquo;&amp;body=Добрый%20день!" class="btn btn-outline-primary rounded-circle" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="{{ user.email }}"><i class="bi bi-envelope-at fs-6"></i></a>
+                    <a href="mailto:{{ user.email }}?subject=Запрос от сервиса &laquo;SciMaster&raquo;&amp;body=Добрый%20день!" class="btn btn-outline-primary rounded-circle" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="{{ user.email }}"><i class="bi bi-envelope-at fs-6"></i></a>
                   {% else %}
                     <div class="btn btn-outline-primary rounded-circle" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="&mdash;&mdash;&mdash;">
                       <i class="bi bi-envelope-at fs-6"></i>

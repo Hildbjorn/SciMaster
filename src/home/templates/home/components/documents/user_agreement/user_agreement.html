@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+SciMaster - Пользовательское соглашение
+{% endblock %}
+
+<!-- META TAGS -->
+{% block meta_tags %}
+{% include 'layout/components/meta_tags.html' %}
+{% endblock %}
+
+{% block content %}
+<section id="user_agreement" class="py-5">
+  <div class="container">
+    <h1 class="text-center mb-5">Пользовательское соглашение</h1>
+    <!-- Основной текст соглашения -->
+    {% include 'home/components/documents/user_agreement/user_agreement_content.html' %}
+    <!-- ===== -->
+  </div>
+</section>
+{% endblock %}

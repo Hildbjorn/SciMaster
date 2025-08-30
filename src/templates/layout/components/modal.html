@@ -1,16 +1,18 @@
 {% load static %}
-<!-- ========== ОСНОВНОЕ МОДАЛЬНОЕ ОКНО ========== -->
-<!-- 
-  Универсальное модальное окно для всего сайта
-  Контент подгружается динамически через HTMX
- -->
-
+<!-- ========== УНИВЕРСАЛЬНОЕ МОДАЛЬНОЕ ОКНО ========== -->
 <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
-  <!-- Контейнер модального окна -->
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-    <!-- Контент модального окна (будет заменяться динамически) -->
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content" id="modal-content">
-      <!-- Контент будет подгружаться динамически -->
+      <!-- Контент будет подгружаться динамически через HTMX -->
+    </div>
+  </div>
+</div>
+
+<!-- ========== БОЛЬШОЕ МОДАЛЬНОЕ ОКНО ДЛЯ ДОКУМЕНТОВ ========== -->
+<div class="modal fade" id="largeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="largeModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content" id="largeModal-content">
+      <!-- Контент будет подгружаться динамически через HTMX -->
     </div>
   </div>
 </div>

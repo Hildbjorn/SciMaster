@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<!--   
-  Базовый шаблон проекта "Бизнес-Модель PRO"
-  Автор: Artem Fomin (2024)
+<!--     
+  Базовый шаблон проекта "SciMaster"
+  Автор: Artem Fomin (2025)
   Используемые технологии:
   - Django
   - Bootstrap 5
   - HTMX
   - jQuery
   - Sass
-  -->
+    -->
 {% load static %}
 {% load sass_tags %}
 {% load django_bootstrap5 %}
@@ -45,7 +45,7 @@
     <!-- ==================== ЗАГОЛОВОК И ФАВИКОНКИ ==================== -->
     <title>
       {% block title %}
-        Бизнес-Модель PRO
+        SciMaster
       {% endblock %}
     </title>
 
@@ -74,10 +74,10 @@
       <!-- Системные сообщения (успех, ошибки, предупреждения) -->
       {% include 'layout/components/messages.html' %}
 
-      <!--   
+      <!--     
         БЛОК КОНТЕНТА 
         Основное содержимое страницы (переопределяется в дочерних шаблонах)
-        -->
+          -->
       {% block content %}
 
       {% endblock %}
