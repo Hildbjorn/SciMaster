@@ -20,6 +20,8 @@ urlpatterns = [
     path('documents/<str:filename>', serve_documents, name='serve_documents'),
     # маршрут к аккаунтам пользователей
     path('account/', include('users.urls')),
+    # маршрут к проектам
+    path('projects/', include('projects.urls')),
 ]
 
 # добавление маршрута к медиафайлам

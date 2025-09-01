@@ -1,0 +1,852 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+  SciMaster - Детали проекта
+{% endblock %}
+
+{% block meta_tags %}
+  {% include 'layout/components/meta_tags.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+    <!-- Хлебные крошки -->
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'all_projects' %}">Все проекты</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Детали проекта</li>
+      </ol>
+    </nav>
+
+    <!-- Заголовок и действия -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <div>
+        <h1 class="h3 mb-1">Разработка системы анализа больших данных</h1>
+        <span class="badge bg-success fs-6">Активный</span>
+        <span class="badge bg-primary ms-2 fs-6">НИР</span>
+      </div>
+      <div>
+        <button class="btn btn-secondary me-2"><i class="bi bi-pencil me-1"></i>Редактировать</button>
+        <button class="btn btn-primary"><i class="bi bi-file-earmark-word me-1"></i>Экспорт в Word</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- Основная информация -->
+      <div class="col-lg-7">
+        <!-- Карточка общей информации -->
+        <div class="card mb-4">
+          <div class="card-header bg-transparent">
+            <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i>Общая информация</h5>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label text-muted small mb-1">Научный руководитель</label>
+                  <p class="mb-0 fw-medium">Иванов Александр Сергеевич</p>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-muted small mb-1">Заказчик</label>
+                  <p class="mb-0 fw-medium">Минобрнауки России</p>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-muted small mb-1">Срок выполнения</label>
+                  <p class="mb-0 fw-medium">01.03.2023 - 15.12.2023</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label text-muted small mb-1">Бюджет</label>
+                  <p class="mb-0 fw-medium">4 850 000 ₽</p>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-muted small mb-1">Текущий прогресс</label>
+                  <div class="d-flex align-items-center">
+                    <div class="progress flex-grow-1 me-3" style="height: 8px;">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 65%;"></div>
+                    </div>
+                    <span class="fw-medium">65%</span>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label text-muted small mb-1">Статус</label>
+                  <p class="mb-0 fw-medium">
+                    <span class="badge bg-success">В работе</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-3">
+              <label class="form-label text-muted small mb-1">Описание проекта</label>
+              <p class="mb-0">НИР по созданию платформы для обработки массивов информации в реальном времени. Проект включает разработку алгоритмов машинного обучения, создание интерфейса для визуализации данных и интеграцию с существующими системами.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- План-график исполнения -->
+        <div class="card mb-4">
+          <div class="card-header bg-transparent d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="bi bi-calendar-event me-2"></i>План-график исполнения</h5>
+            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-plus-circle me-1"></i>Добавить этап</button>
+          </div>
+          <div class="card-body">
+            <div class="timeline">
+              <!-- Этап 1 -->
+              <div class="timeline-item">
+                <div class="timeline-marker bg-primary"></div>
+                <div class="timeline-content">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                      <h6 class="mb-0">Подготовительный этап</h6>
+                      <div class="avatar-group mt-1">
+                        <span class="avatar avatar-xs rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Иванов А.С.">ИА</span>
+                        <span class="avatar avatar-xs rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                        <span class="badge bg-light text-dark ms-2">+2 исполнителя</span>
+                      </div>
+                    </div>
+                    <span class="badge bg-success">Завершено</span>
+                  </div>
+                  <p class="text-muted small mb-2">01.03.2023 - 31.03.2023</p>
+                  <p class="mb-2">Анализ требований, изучение предметной области, формирование ТЗ</p>
+                  <div class="progress mb-2" style="height: 6px;">
+                    <div class="progress-bar bg-success" style="width: 100%"></div>
+                  </div>
+
+                  <!-- Мероприятия этапа -->
+                  <div class="accordion accordion-flush" id="accordionStage1">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#stage1-collapse"><span class="small">3 мероприятия · 8 задач</span></button></h2>
+                      <div id="stage1-collapse" class="accordion-collapse collapse" data-bs-parent="#accordionStage1">
+                        <div class="accordion-body p-0">
+                          <div class="list-group list-group-flush">
+                            <!-- Мероприятие 1 -->
+                            <div class="list-group-item">
+                              <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                  <div class="fw-medium">Анализ литературы</div>
+                                  <div class="avatar-group mt-1">
+                                    <span class="avatar avatar-xs rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                                    <span class="avatar avatar-xs rounded-circle bg-success text-white" data-bs-toggle="tooltip" title="Козлова Е.И.">КЕ</span>
+                                  </div>
+                                </div>
+                                <span class="badge bg-success">Завершено</span>
+                              </div>
+                              <div class="text-muted small mt-2">05.03.2023 - 15.03.2023</div>
+
+                              <!-- Задачи мероприятия -->
+                              <div class="accordion accordion-flush mt-2" id="accordionEvent1">
+                                <div class="accordion-item">
+                                  <h3 class="accordion-header"><button class="accordion-button collapsed py-1" type="button" data-bs-toggle="collapse" data-bs-target="#event1-collapse"><span class="small">3 задачи</span></button></h3>
+                                  <div id="event1-collapse" class="accordion-collapse collapse" data-bs-parent="#accordionEvent1">
+                                    <div class="accordion-body p-0">
+                                      <div class="list-group list-group-flush small">
+                                        <div class="list-group-item">
+                                          <div class="d-flex justify-content-between">
+                                            <div>
+                                              <span>Подбор источников</span>
+                                              <span class="badge bg-info text-dark ms-2" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                                            </div>
+                                            <span class="badge bg-success">Завершено</span>
+                                          </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                          <div class="d-flex justify-content-between">
+                                            <div>
+                                              <span>Анализ методов</span>
+                                              <span class="badge bg-info text-dark me-1" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                                              <span class="badge bg-success text-dark" data-bs-toggle="tooltip" title="Козлова Е.И.">КЕ</span>
+                                            </div>
+                                            <span class="badge bg-success">Завершено</span>
+                                          </div>
+                                        </div>
+                                        <div class="list-group-item">
+                                          <div class="d-flex justify-content-between">
+                                            <div>
+                                              <span>Составление библиографии</span>
+                                              <span class="badge bg-success text-dark" data-bs-toggle="tooltip" title="Козлова Е.И.">КЕ</span>
+                                            </div>
+                                            <span class="badge bg-success">Завершено</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Мероприятие 2 -->
+                            <div class="list-group-item">
+                              <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                  <div class="fw-medium">Формирование ТЗ</div>
+                                  <div class="avatar-group mt-1">
+                                    <span class="avatar avatar-xs rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Иванов А.С.">ИА</span>
+                                    <span class="avatar avatar-xs rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Сидоров В.П.">СВ</span>
+                                  </div>
+                                </div>
+                                <span class="badge bg-success">Завершено</span>
+                              </div>
+                              <div class="text-muted small mt-2">16.03.2023 - 25.03.2023</div>
+                            </div>
+
+                            <!-- Мероприятие 3 -->
+                            <div class="list-group-item">
+                              <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                  <div class="fw-medium">Согласование с заказчиком</div>
+                                  <div class="avatar-group mt-1">
+                                    <span class="avatar avatar-xs rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Иванов А.С.">ИА</span>
+                                  </div>
+                                </div>
+                                <span class="badge bg-success">Завершено</span>
+                              </div>
+                              <div class="text-muted small mt-2">26.03.2023 - 31.03.2023</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Этап 2 -->
+              <div class="timeline-item">
+                <div class="timeline-marker bg-primary"></div>
+                <div class="timeline-content">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                      <h6 class="mb-0">Разработка алгоритмов</h6>
+                      <div class="avatar-group mt-1">
+                        <span class="avatar avatar-xs rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                        <span class="avatar avatar-xs rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Сидоров В.П.">СВ</span>
+                        <span class="avatar avatar-xs rounded-circle bg-secondary text-dark" data-bs-toggle="tooltip" title="Фёдоров И.А.">ФИ</span>
+                        <span class="badge bg-light text-dark ms-2">+1 исполнитель</span>
+                      </div>
+                    </div>
+                    <span class="badge bg-warning text-dark">В работе</span>
+                  </div>
+                  <p class="text-muted small mb-2">01.04.2023 - 30.06.2023</p>
+                  <p class="mb-2">Создание и тестирование алгоритмов машинного обучения для анализа данных</p>
+                  <div class="progress mb-2" style="height: 6px;">
+                    <div class="progress-bar bg-warning" style="width: 75%"></div>
+                  </div>
+
+                  <!-- Мероприятия этапа -->
+                  <div class="accordion accordion-flush" id="accordionStage2">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header"><button class="accordion-button collapsed py-2" type="button" data-bs-toggle="collapse" data-bs-target="#stage2-collapse"><span class="small">4 мероприятия · 12 задач</span></button></h2>
+                      <div id="stage2-collapse" class="accordion-collapse collapse" data-bs-parent="#accordionStage2">
+                        <div class="accordion-body p-0">
+                          <div class="list-group list-group-flush">
+                            <!-- Мероприятие 1 -->
+                            <div class="list-group-item">
+                              <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                  <div class="fw-medium">Разработка архитектуры</div>
+                                  <div class="avatar-group mt-1">
+                                    <span class="avatar avatar-xs rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Сидоров В.П.">СВ</span>
+                                    <span class="avatar avatar-xs rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                                  </div>
+                                </div>
+                                <span class="badge bg-success">Завершено</span>
+                              </div>
+                              <div class="text-muted small mt-2">01.04.2023 - 15.04.2023</div>
+                            </div>
+
+                            <!-- Мероприятие 2 -->
+                            <div class="list-group-item">
+                              <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                  <div class="fw-medium">Реализация базовых алгоритмов</div>
+                                  <div class="avatar-group mt-1">
+                                    <span class="avatar avatar-xs rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                                    <span class="avatar avatar-xs rounded-circle bg-secondary text-dark" data-bs-toggle="tooltip" title="Фёдоров И.А.">ФИ</span>
+                                  </div>
+                                </div>
+                                <span class="badge bg-success">Завершено</span>
+                              </div>
+                              <div class="text-muted small mt-2">16.04.2023 - 15.05.2023</div>
+                            </div>
+
+                            <!-- Мероприятие 3 -->
+                            <div class="list-group-item">
+                              <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                  <div class="fw-medium">Оптимизация производительности</div>
+                                  <div class="avatar-group mt-1">
+                                    <span class="avatar avatar-xs rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Сидоров В.П.">СВ</span>
+                                    <span class="avatar avatar-xs rounded-circle bg-secondary text-dark" data-bs-toggle="tooltip" title="Фёдоров И.А.">ФИ</span>
+                                  </div>
+                                </div>
+                                <span class="badge bg-warning text-dark">В работе</span>
+                              </div>
+                              <div class="text-muted small mt-2">16.05.2023 - 15.06.2023</div>
+                            </div>
+
+                            <!-- Мероприятие 4 -->
+                            <div class="list-group-item">
+                              <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                  <div class="fw-medium">Тестирование алгоритмов</div>
+                                  <div class="avatar-group mt-1">
+                                    <span class="avatar avatar-xs rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                                    <span class="avatar avatar-xs rounded-circle bg-success text-white" data-bs-toggle="tooltip" title="Козлова Е.И.">КЕ</span>
+                                  </div>
+                                </div>
+                                <span class="badge bg-secondary text-dark">Не начато</span>
+                              </div>
+                              <div class="text-muted small mt-2">16.06.2023 - 30.06.2023</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Этап 3 -->
+              <div class="timeline-item">
+                <div class="timeline-marker bg-secondary"></div>
+                <div class="timeline-content">
+                  <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                      <h6 class="mb-0">Создание интерфейса</h6>
+                      <div class="avatar-group mt-1">
+                        <span class="avatar avatar-xs rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Сидоров В.П.">СВ</span>
+                        <span class="avatar avatar-xs rounded-circle bg-secondary text-dark" data-bs-toggle="tooltip" title="Фёдоров И.А.">ФИ</span>
+                        <span class="badge bg-light text-dark ms-2">+2 исполнителя</span>
+                      </div>
+                    </div>
+                    <span class="badge bg-secondary text-dark">Не начато</span>
+                  </div>
+                  <p class="text-muted small mb-2">01.07.2023 - 31.08.2023</p>
+                  <p class="mb-2">Разработка пользовательского интерфейса для визуализации и управления данными</p>
+                  <div class="progress mb-2" style="height: 6px;">
+                    <div class="progress-bar bg-secondary" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Боковая панель -->
+      <div class="col-lg-5">
+        <!-- Ресурсный план -->
+        <div class="card mb-4">
+          <div class="card-header bg-transparent">
+            <h5 class="mb-0"><i class="bi bi-people me-2"></i>Ресурсный план</h5>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="form-label text-muted small mb-2">Исполнители проекта</label>
+              <div class="avatar-group mb-3">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Иванов А.С. (руководитель)">ИА</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Петрова М.К. (Data Scientist)">ПМ</span>
+                <span class="avatar avatar-sm rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Сидоров В.П. (Разработчик)">СВ</span>
+                <span class="avatar avatar-sm rounded-circle bg-success text-white" data-bs-toggle="tooltip" title="Козлова Е.И. (Аналитик)">КЕ</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-dark" data-bs-toggle="tooltip" data-bs-html="true" title="+4 исполнителя">+4</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label text-muted small mb-2">Трудоемкость</label>
+              <div class="d-flex justify-content-between mb-1">
+                <span>Человеко-часов</span>
+                <span class="fw-medium">1,240</span>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span>Стоимость труда</span>
+                <span class="fw-medium">1,860,000 ₽</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Средняя ставка</span>
+                <span class="fw-medium">1,500 ₽/час</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label text-muted small mb-2">Оборудование и материалы</label>
+              <div class="d-flex justify-content-between mb-1">
+                <span>Серверное оборудование</span>
+                <span class="fw-medium">850,000 ₽</span>
+              </div>
+              <div class="d-flex justify-content-between mb-1">
+                <span>Лицензии ПО</span>
+                <span class="fw-medium">420,000 ₽</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Прочие материалы</span>
+                <span class="fw-medium">180,000 ₽</span>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label class="form-label text-muted small mb-2">Распределение бюджета</label>
+              <div class="chart-container mb-3" style="height: 250px;">
+                <canvas id="budgetChart"></canvas>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span class="fw-medium">Итого:</span>
+                <span class="fw-bold">4,850,000 ₽</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ключевые показатели -->
+        <div class="card mb-4">
+          <div class="card-header bg-transparent">
+            <h5 class="mb-0"><i class="bi bi-graph-up me-2"></i>Ключевые показатели</h5>
+          </div>
+          <div class="card-body">
+            <div class="row text-center">
+              <div class="col-6 mb-3">
+                <div class="border rounded p-3">
+                  <div class="text-primary fw-bold fs-4">15/23</div>
+                  <div class="text-muted small">Задач выполнено</div>
+                </div>
+              </div>
+              <div class="col-6 mb-3">
+                <div class="border rounded p-3">
+                  <div class="text-success fw-bold fs-4">8</div>
+                  <div class="text-muted small">Исполнителей</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="border rounded p-3">
+                  <div class="text-warning fw-bold fs-4">3</div>
+                  <div class="text-muted small">Этапа из 5</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="border rounded p-3">
+                  <div class="text-info fw-bold fs-4">65%</div>
+                  <div class="text-muted small">Прогресс</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Документы и индивидуальные планы -->
+        <div class="card">
+          <div class="card-header bg-transparent">
+            <h5 class="mb-0"><i class="bi bi-folder me-2"></i>Документы</h5>
+          </div>
+          <div class="card-body">
+            <div class="list-group list-group-flush">
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-file-earmark-text text-primary me-3"></i>
+                  <div class="flex-grow-1">
+                    <div>Техническое задание</div>
+                    <small class="text-muted">PDF · 2.3 MB</small>
+                  </div>
+                  <i class="bi bi-download text-muted"></i>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-file-earmark-text text-primary me-3"></i>
+                  <div class="flex-grow-1">
+                    <div>Отчет по этапу 1</div>
+                    <small class="text-muted">DOCX · 1.1 MB</small>
+                  </div>
+                  <i class="bi bi-download text-muted"></i>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-file-earmark-spreadsheet text-success me-3"></i>
+                  <div class="flex-grow-1">
+                    <div>Бюджетная смета</div>
+                    <small class="text-muted">XLSX · 0.8 MB</small>
+                  </div>
+                  <i class="bi bi-download text-muted"></i>
+                </div>
+              </a>
+              <a href="#" class="list-group-item list-group-item-action">
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-file-earmark-text text-primary me-3"></i>
+                  <div class="flex-grow-1">
+                    <div>План-график</div>
+                    <small class="text-muted">PDF · 1.5 MB</small>
+                  </div>
+                  <i class="bi bi-download text-muted"></i>
+                </div>
+              </a>
+            </div>
+
+            <!-- Аккордеон "Индивидуальные планы" -->
+            <div class="accordion mt-4" id="individualPlansAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#individualPlansCollapse">
+                    <i class="bi bi-person-badge me-2"></i>
+                    Индивидуальные планы исполнителей
+                  </button>
+                </h2>
+                <div id="individualPlansCollapse" class="accordion-collapse collapse" data-bs-parent="#individualPlansAccordion">
+                  <div class="accordion-body p-0">
+                    <div class="list-group list-group-flush">
+                      <!-- План для Иванова А.С. -->
+                      <div class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <span class="avatar avatar-sm rounded-circle bg-primary text-white me-3">ИА</span>
+                            <div>
+                              <div class="fw-medium">Иванов Александр Сергеевич</div>
+                              <small class="text-muted">Научный руководитель</small>
+                            </div>
+                          </div>
+                          <button class="btn btn-sm btn-link"><i class="bi bi-download"></i></button>
+                        </div>
+                        <div class="mt-2 small text-muted">
+                          <span class="me-3"><i class="bi bi-clock me-1"></i>12 задач</span>
+                          <span><i class="bi bi-calendar me-1"></i>Обновлено: 15.06.2023</span>
+                        </div>
+                      </div>
+
+                      <!-- План для Петровой М.К. -->
+                      <div class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <span class="avatar avatar-sm rounded-circle bg-info text-white me-3">ПМ</span>
+                            <div>
+                              <div class="fw-medium">Петрова Мария Константиновна</div>
+                              <small class="text-muted">Data Scientist</small>
+                            </div>
+                          </div>
+                          <button class="btn btn-sm btn-link"><i class="bi bi-download"></i></button>
+                        </div>
+                        <div class="mt-2 small text-muted">
+                          <span class="me-3"><i class="bi bi-clock me-1"></i>8 задач</span>
+                          <span><i class="bi bi-calendar me-1"></i>Обновлено: 14.06.2023</span>
+                        </div>
+                      </div>
+
+                      <!-- План для Сидорова В.П. -->
+                      <div class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <span class="avatar avatar-sm rounded-circle bg-warning text-dark me-3">СВ</span>
+                            <div>
+                              <div class="fw-medium">Сидоров Владимир Петрович</div>
+                              <small class="text-muted">Разработчик</small>
+                            </div>
+                          </div>
+                          <button class="btn btn-sm btn-link"><i class="bi bi-download"></i></button>
+                        </div>
+                        <div class="mt-2 small text-muted">
+                          <span class="me-3"><i class="bi bi-clock me-1"></i>6 задач</span>
+                          <span><i class="bi bi-calendar me-1"></i>Обновлено: 13.06.2023</span>
+                        </div>
+                      </div>
+
+                      <!-- План для Козловой Е.И. -->
+                      <div class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <span class="avatar avatar-sm rounded-circle bg-success text-white me-3">КЕ</span>
+                            <div>
+                              <div class="fw-medium">Козлова Елена Игоревна</div>
+                              <small class="text-muted">Аналитик</small>
+                            </div>
+                          </div>
+                          <button class="btn btn-sm btn-link"><i class="bi bi-download"></i></button>
+                        </div>
+                        <div class="mt-2 small text-muted">
+                          <span class="me-3"><i class="bi bi-clock me-1"></i>5 задач</span>
+                          <span><i class="bi bi-calendar me-1"></i>Обновлено: 12.06.2023</span>
+                        </div>
+                      </div>
+
+                      <!-- План для остальных исполнителей -->
+                      <div class="list-group-item">
+                        <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                            <span class="avatar avatar-sm rounded-circle bg-secondary text-dark me-3">+4</span>
+                            <div>
+                              <div class="fw-medium">Остальные исполнители</div>
+                              <small class="text-muted">Вспомогательный персонал</small>
+                            </div>
+                          </div>
+                          <div class="d-flex">
+                            <button class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-download me-1"></i>Все планы</button>
+                            <button class="btn btn-sm btn-secondary"><i class="bi bi-eye me-1"></i>Показать</button>
+                          </div>
+                        </div>
+                        <div class="mt-2 small text-muted">
+                          <span class="me-3"><i class="bi bi-clock me-1"></i>15 задач всего</span>
+                          <span><i class="bi bi-people me-1"></i>4 исполнителя</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Кнопка массовой выгрузки -->
+                    <div class="p-3 bg-light">
+                      <button class="btn btn-primary w-100">
+                        <i class="bi bi-file-earmark-zip me-2"></i>
+                        Выгрузить все индивидуальные планы (ZIP)
+                      </button>
+                      <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="includeReports" />
+                        <label class="form-check-label small" for="includeReports">Включить отчеты о выполнении</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: #e9ecef;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    
+    .timeline-marker {
+      position: absolute;
+      left: -2rem;
+      top: 0.5rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 2px #dee2e6;
+    }
+    
+    .timeline-content {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e9ecef;
+    }
+    
+    .avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      border: 2px solid #fff;
+    }
+    
+    .avatar-xs {
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-right: -0.5rem;
+    }
+    
+    .avatar-sm {
+      width: 2rem;
+      height: 2rem;
+    }
+    
+    .avatar-group {
+      display: flex;
+      align-items: center;
+    }
+    
+    .accordion-button {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    
+    .accordion-body {
+      padding: 0;
+    }
+    
+    .list-group-item {
+      border-left: none;
+      border-right: none;
+      padding: 1rem;
+    }
+    
+    .chart-container {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    
+    .chart-legend {
+      font-size: 0.8rem;
+    }
+    
+    .legend-color {
+      display: inline-block;
+      min-width: 12px;
+    }
+    
+    @media (max-width: 576px) {
+      .chart-legend .col-6 {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Инициализация tooltips
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      })
+    
+      // Регистрируем плагин для подписей данных
+      Chart.register(ChartDataLabels)
+    
+      // График распределения бюджета
+      const budgetChart = new Chart(document.getElementById('budgetChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Оплата труда', 'Оборудование', 'Лицензии', 'Материалы', 'Накладные'],
+          datasets: [
+            {
+              data: [1860000, 850000, 420000, 180000, 1640000],
+              backgroundColor: ['#0d6efd', '#6610f2', '#6f42c1', '#d63384', '#fd7e14'],
+              borderWidth: 0
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '60%',
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const value = context.raw
+                  const total = context.dataset.data.reduce((a, b) => a + b, 0)
+                  const percentage = Math.round((value / total) * 100)
+                  return `${context.label}: ${formatCurrency(value)} (${percentage}%)`
+                }
+              }
+            },
+            datalabels: {
+              color: '#fff',
+              font: {
+                weight: 'bold',
+                size: 10
+              },
+              formatter: (value, context) => {
+                const total = context.dataset.data.reduce((a, b) => a + b, 0)
+                const percentage = Math.round((value / total) * 100)
+                return `${percentage}%`
+              },
+              textAlign: 'center',
+              textStrokeColor: 'rgba(0, 0, 0, 0.5)',
+              textStrokeWidth: 2,
+              padding: 0
+            }
+          }
+        }
+      })
+    
+      // Функция для форматирования валюты
+      function formatCurrency(value) {
+        return new Intl.NumberFormat('ru-RU', {
+          style: 'currency',
+          currency: 'RUB',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        }).format(value)
+      }
+    
+      // Легенда для диаграммы
+      const legendContainer = document.createElement('div')
+      legendContainer.className = 'chart-legend mt-3'
+      legendContainer.innerHTML = `
+          <div class="row small">
+            <div class="col-6 mb-2">
+              <div class="d-flex align-items-center">
+                <span class="legend-color me-2" style="background-color: #0d6efd; width: 12px; height: 12px; border-radius: 2px;"></span>
+                <span>Оплата труда</span>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="d-flex align-items-center">
+                <span class="legend-color me-2" style="background-color: #6610f2; width: 12px; height: 12px; border-radius: 2px;"></span>
+                <span>Оборудование</span>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="d-flex align-items-center">
+                <span class="legend-color me-2" style="background-color: #6f42c1; width: 12px; height: 12px; border-radius: 2px;"></span>
+                <span>Лицензии</span>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="d-flex align-items-center">
+                <span class="legend-color me-2" style="background-color: #d63384; width: 12px; height: 12px; border-radius: 2px;"></span>
+                <span>Материалы</span>
+              </div>
+            </div>
+            <div class="col-6 mb-2">
+              <div class="d-flex align-items-center">
+                <span class="legend-color me-2" style="background-color: #fd7e14; width: 12px; height: 12px; border-radius: 2px;"></span>
+                <span>Накладные</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 p-2 bg-light rounded">
+            <div class="d-flex justify-content-between small">
+              <span class="fw-bold">Итого:</span>
+              <span class="fw-bold">${formatCurrency(4850000)}</span>
+            </div>
+          </div>
+        `
+    
+      document.querySelector('.chart-container').parentNode.appendChild(legendContainer)
+    
+      // Обработка скачивания индивидуальных планов
+      document.querySelectorAll('#individualPlansCollapse .btn-link').forEach((button) => {
+        button.addEventListener('click', function (e) {
+          e.stopPropagation()
+          const executorName = this.closest('.list-group-item').querySelector('.fw-medium').textContent
+          console.log(`Скачивание плана для: ${executorName}`)
+        })
+      })
+    
+      // Обработка массовой выгрузки
+      document.querySelector('#individualPlansCollapse .btn-primary').addEventListener('click', function () {
+        const includeReports = document.getElementById('includeReports').checked
+        console.log(`Массовая выгрузка планов. Включить отчеты: ${includeReports}`)
+      })
+    })
+  </script>
+{% endblock %}

@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'home',
     'common',
     'users',
-    # 'projects',
+    'projects',
     # 'feedback',
     # 'billing',
     

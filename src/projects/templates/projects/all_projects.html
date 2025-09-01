@@ -1,0 +1,916 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+  SciMaster - Все проекты
+{% endblock %}
+
+<!-- META TAGS -->
+{% block meta_tags %}
+  {% include 'layout/components/meta_tags.html' %}
+{% endblock %}
+
+{% block content %}
+  <div class="container py-4">
+    <!-- Заголовок и кнопки управления -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="h3 mb-0">Все проекты</h1>
+      <div>
+        <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#filterModal"><i class="bi bi-funnel me-1"></i>Фильтры</button>
+        <a href="#" class="btn btn-success"><i class="bi bi-plus-circle me-1"></i>Новый проект</a>
+      </div>
+    </div>
+
+    <!-- Статистика по проектам -->
+    <div class="row mb-4">
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-start-3 border-start-primary h-100 py-2">
+          <div class="card-body">
+            <div class="row align-items-center no-gutters">
+              <div class="col me-2">
+                <div class="text-uppercase text-primary fw-bold text-xs mb-1">
+                  <span>Всего проектов</span>
+                </div>
+                <div class="text-dark fw-bold h5 mb-0">
+                  <span>24</span>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="bi bi-clipboard-data text-gray-300" style="font-size: 2rem;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-start-3 border-start-success h-100 py-2">
+          <div class="card-body">
+            <div class="row align-items-center no-gutters">
+              <div class="col me-2">
+                <div class="text-uppercase text-success fw-bold text-xs mb-1">
+                  <span>Активные</span>
+                </div>
+                <div class="text-dark fw-bold h5 mb-0">
+                  <span>15</span>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="bi bi-play-circle text-gray-300" style="font-size: 2rem;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-start-3 border-start-warning h-100 py-2">
+          <div class="card-body">
+            <div class="row align-items-center no-gutters">
+              <div class="col me-2">
+                <div class="text-uppercase text-warning fw-bold text-xs mb-1">
+                  <span>На паузе</span>
+                </div>
+                <div class="text-dark fw-bold h5 mb-0">
+                  <span>4</span>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="bi bi-pause-circle text-gray-300" style="font-size: 2rem;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-start-3 border-start-danger h-100 py-2">
+          <div class="card-body">
+            <div class="row align-items-center no-gutters">
+              <div class="col me-2">
+                <div class="text-uppercase text-danger fw-bold text-xs mb-1">
+                  <span>Завершённые</span>
+                </div>
+                <div class="text-dark fw-bold h5 mb-0">
+                  <span>5</span>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="bi bi-check-circle text-gray-300" style="font-size: 2rem;"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Карточки проектов -->
+    <div class="row" id="projects-container">
+      <!-- Пример карточки проекта 1 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-success">Активный</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Разработка системы анализа больших данных</h5>
+            <p class="card-text text-muted small">НИР по созданию платформы для обработки массивов информации в реальном времени</p>
+
+            <div class="mb-3">
+              <span class="badge bg-primary">НИР</span>
+              <span class="badge bg-info text-light">ИТ</span>
+              <span class="badge bg-secondary">Машинное обучение</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">01.03.2023 - 15.12.2023</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">4 850 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">8</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 65%</span>
+              <span class="text-muted small">15/23 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Иванов А.С.">ИА</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Петрова М.К.">ПМ</span>
+                <span class="avatar avatar-sm rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Сидоров В.П.">СВ</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-white" data-bs-toggle="tooltip" data-bs-html="true" title="+5 исполнителей">+5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 2 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-warning text-dark">На паузе</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Исследование новых композитных материалов</h5>
+            <p class="card-text text-muted small">ОКР по разработке и тестированию материалов с улучшенными характеристиками</p>
+
+            <div class="mb-3">
+              <span class="badge bg-success">ОКР</span>
+              <span class="badge bg-info text-light">Материаловедение</span>
+              <span class="badge bg-secondary">Нанотехнологии</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">10.01.2023 - 30.06.2024</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">7 200 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">12</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 30%</span>
+              <span class="text-muted small">9/30 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Кузнецов Д.В.">КД</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Смирнова О.И.">СО</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-white" data-bs-toggle="tooltip" data-bs-html="true" title="+10 исполнителей">+10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 3 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-danger">Завершён</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Консультационные услуги по внедрению СУОТ</h5>
+            <p class="card-text text-muted small">Оказание услуг по внедрению системы управления охраной труда на предприятии</p>
+
+            <div class="mb-3">
+              <span class="badge bg-info text-light">Услуги</span>
+              <span class="badge bg-secondary">Консалтинг</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">15.02.2023 - 20.05.2023</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">1 500 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">3</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 100%</span>
+              <span class="text-muted small">18/18 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Васильев П.К.">ВП</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Николаева Е.С.">НЕ</span>
+                <span class="avatar avatar-sm rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Фёдоров И.А.">ФИ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 4 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-success">Активный</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Анализ климатических изменений в Арктике</h5>
+            <p class="card-text text-muted small">Мониторинг и прогнозирование изменений климата в арктическом регионе</p>
+
+            <div class="mb-3">
+              <span class="badge bg-primary">НИР</span>
+              <span class="badge bg-info text-light">Экология</span>
+              <span class="badge bg-secondary">Климатология</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">01.04.2023 - 31.12.2024</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">6 300 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">7</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 42%;" aria-valuenow="42" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 42%</span>
+              <span class="text-muted small">10/24 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Орлова Т.В.">ОТ</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Лебедев М.С.">ЛМ</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-white" data-bs-toggle="tooltip" data-bs-html="true" title="+5 исполнителей">+5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 5 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-warning text-dark">На паузе</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Разработка биосенсоров для медицинской диагностики</h5>
+            <p class="card-text text-muted small">Создание высокочувствительных сенсоров для ранней диагностики заболеваний</p>
+
+            <div class="mb-3">
+              <span class="badge bg-success">ОКР</span>
+              <span class="badge bg-info text-light">Медицина</span>
+              <span class="badge bg-secondary">Биотехнологии</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">15.03.2023 - 30.09.2024</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">8 750 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">9</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 28%;" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 28%</span>
+              <span class="text-muted small">7/25 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Громов А.В.">ГА</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Зайцева Е.Д.">ЗЕ</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-white" data-bs-toggle="tooltip" data-bs-html="true" title="+7 исполнителей">+7</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 6 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-success">Активный</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Оптимизация логистических цепочек поставок</h5>
+            <p class="card-text text-muted small">Разработка алгоритмов оптимизации логистических маршрутов и складских запасов</p>
+
+            <div class="mb-3">
+              <span class="badge bg-primary">НИР</span>
+              <span class="badge bg-info text-light">Логистика</span>
+              <span class="badge bg-secondary">Аналитика</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">01.06.2023 - 31.05.2024</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">3 200 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">5</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 75%</span>
+              <span class="text-muted small">15/20 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Тихонов Р.Н.">ТР</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Морозова А.К.">МА</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-white" data-bs-toggle="tooltip" data-bs-html="true" title="+3 исполнителя">+3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 7 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-danger">Завершён</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Аудит информационной безопасности</h5>
+            <p class="card-text text-muted small">Комплексный аудит систем защиты информации предприятия</p>
+
+            <div class="mb-3">
+              <span class="badge bg-info text-light">Услуги</span>
+              <span class="badge bg-secondary">Кибербезопасность</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">01.02.2023 - 15.04.2023</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">2 100 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">4</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 100%</span>
+              <span class="text-muted small">12/12 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Белов С.П.">БС</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Ковалёва И.М.">КИ</span>
+                <span class="avatar avatar-sm rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Давыдов О.Л.">ДО</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-white" data-bs-toggle="tooltip" title="Егорова Н.С.">ЕН</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 8 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-success">Активный</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Исследование рынка нанотехнологий</h5>
+            <p class="card-text text-muted small">Анализ мирового рынка нанотехнологий и перспектив развития</p>
+
+            <div class="mb-3">
+              <span class="badge bg-primary">НИР</span>
+              <span class="badge bg-info text-light">Нанотехнологии</span>
+              <span class="badge bg-secondary">Маркетинг</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">10.05.2023 - 20.11.2023</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">1 800 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">3</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 60%</span>
+              <span class="text-muted small">9/15 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Соколов Д.И.">СД</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Попова В.А.">ПВ</span>
+                <span class="avatar avatar-sm rounded-circle bg-warning text-dark" data-bs-toggle="tooltip" title="Козлов А.Р.">КА</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 9 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-warning text-dark">На паузе</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Разработка системы умного города</h5>
+            <p class="card-text text-muted small">Создание концепции и прототипа системы управления городской инфраструктурой</p>
+
+            <div class="mb-3">
+              <span class="badge bg-success">ОКР</span>
+              <span class="badge bg-info text-light">Умный город</span>
+              <span class="badge bg-secondary">IoT</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">01.03.2023 - 31.12.2024</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">12 500 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">15</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 35%</span>
+              <span class="text-muted small">14/40 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Новиков К.В.">НК</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Медведева Л.П.">МЛ</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-white" data-bs-toggle="tooltip" data-bs-html="true" title="+13 исполнителей">+13</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пример карточки проекта 10 -->
+      <div class="col-xl-4 col-md-6 mb-4">
+        <div class="card project-card h-100">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span class="badge bg-success">Активный</span>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Редактировать</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"><i class="bi bi-clipboard-data me-2"></i>Детали</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item text-danger" href="#"><i class="bi bi-archive me-2"></i>Архивировать</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Создание образовательной платформы</h5>
+            <p class="card-text text-muted small">Разработка онлайн-платформы для дистанционного обучения</p>
+
+            <div class="mb-3">
+              <span class="badge bg-success">ОКР</span>
+              <span class="badge bg-info text-light">Образование</span>
+              <span class="badge bg-secondary">Веб-разработка</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Срок:</span>
+              <span class="fw-medium">15.04.2023 - 28.02.2024</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-muted small">Бюджет:</span>
+              <span class="fw-medium">5 600 000 ₽</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="text-muted small">Исполнители:</span>
+              <span class="fw-medium">6</span>
+            </div>
+
+            <div class="progress mb-3" style="height: 8px;">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">Выполнено: 50%</span>
+              <span class="text-muted small">10/20 задач</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <div class="d-flex justify-content-between">
+              <a href="{% url 'project_detail' %}" class="btn btn-sm btn-outline-primary">Подробнее</a>
+              <div class="avatar-group">
+                <span class="avatar avatar-sm rounded-circle bg-primary text-white" data-bs-toggle="tooltip" title="Фролов И.Г.">ФИ</span>
+                <span class="avatar avatar-sm rounded-circle bg-info text-white" data-bs-toggle="tooltip" title="Антонова С.В.">АС</span>
+                <span class="avatar avatar-sm rounded-circle bg-secondary text-white" data-bs-toggle="tooltip" data-bs-html="true" title="+4 исполнителя">+4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Пагинация -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Предыдущая</a>
+        </li>
+        <li class="page-item active">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">Следующая</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Модальное окно фильтров -->
+  <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filterModalLabel">Фильтры проектов</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Тип проекта</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="filterTypeNir" checked />
+                <label class="form-check-label" for="filterTypeNir">НИР</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="filterTypeOcr" checked />
+                <label class="form-check-label" for="filterTypeOcr">ОКР</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="filterTypeService" checked />
+                <label class="form-check-label" for="filterTypeService">Услуги</label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Статус проекта</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="filterStatusActive" checked />
+                <label class="form-check-label" for="filterStatusActive">Активные</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="filterStatusPaused" />
+                <label class="form-check-label" for="filterStatusPaused">На паузе</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="filterStatusCompleted" />
+                <label class="form-check-label" for="filterStatusCompleted">Завершённые</label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="filterDate" class="form-label">Период</label>
+              <select class="form-select" id="filterDate">
+                <option value="all" selected>Все даты</option>
+                <option value="month">Текущий месяц</option>
+                <option value="quarter">Текущий квартал</option>
+                <option value="year">Текущий год</option>
+                <option value="custom">Произвольный период</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-outline-secondary">Сбросить</button>
+          <button type="button" class="btn btn-primary">Применить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .project-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #e3e6f0;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    .avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      font-size: 0.8rem;
+      margin-left: -0.5rem;
+      border: 2px solid #fff;
+    }
+    .border-start-3 {
+      border-left-width: 3px !important;
+    }
+  </style>
+
+  <script>
+    // Инициализация tooltips
+    document.addEventListener('DOMContentLoaded', function () {
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+      })
+    })
+  </script>
+{% endblock %}
