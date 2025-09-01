@@ -58,5 +58,5 @@ class ProfileAdmin(AdminImageMixin, UserAdmin):
     readonly_fields = ('reg_number', 'image_thumbnail',)
 
 
-admin.site.site_title = 'SciMaster - Панель администратора'
-admin.site.site_header = 'SciMaster - Панель администратора'
+admin.site.site_title = 'Бизнес-модель PRO - Панель администратора'
+admin.site.site_header = 'Бизнес-модель PRO - Панель администратора'

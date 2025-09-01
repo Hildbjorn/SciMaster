@@ -156,7 +156,8 @@ class ProfileUpdateForm(forms.ModelForm):
                                                                      'type': 'checkbox',
                                                                      'role': 'switch',
                                                                      'id': 'agreement',
-                                                                     'checked': ''}))
+                                                                    #  'checked': ''
+                                                                     }))
 
     subscribe = forms.BooleanField(required=False,
                                    label='',

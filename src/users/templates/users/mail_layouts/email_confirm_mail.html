@@ -137,7 +137,7 @@
                 </tr>
                 <tr>
                   <td align="center" style="padding:10px 30px;font-family: Tahoma, Verdana, arial, sans-serif; font-size:24px;line-height:28px;font-weight:bold;">
-                    <img src="https://i.ibb.co/Yjx6Z3m/bm-pro-logo.png" width="590" class="hero-logo" alt="Логотип-Домино" style="width:75%;height:auto;" />
+                    <img src="http://b-model.pro/static/img/elements/logo_domino.webp" width="590" class="hero-logo" alt="Логотип-Домино" style="width:75%;height:auto;" />
                   </td>
                 </tr>
                 <tr>
@@ -209,16 +209,7 @@
                                         </v:roundrect>
                                         <![endif]  -->
                       <!-- [if !mso]> <! -->
-                      <a href="<!-- prettier-ignore -->{% if request.is_secure %}
-                          
-                          https
-
-                        {% else %}
-                          
-                          http
-
-                        {% endif %}://{{ domain }}{% url 'profile_activate' uidb64=uid token=token %}"
-                        style="display:inline-block;padding: 16px 16px; font-size:18px; line-height:18px; text-align:center;text-decoration:none; color: #ffffff; border-radius: 10px; background: #559D9C; mso-padding-alt:0;text-underline-color:#ffffff">
+                      <a href="{% if request.is_secure %}https{% else %}http{% endif %}://{{ domain }}{% url 'profile_activate' uidb64=uid token=token %}" style="display:inline-block;padding: 16px 16px; font-size:18px; line-height:18px; text-align:center;text-decoration:none; color: #ffffff; border-radius: 10px; background: #559D9C; mso-padding-alt:0;text-underline-color:#ffffff">
                         <!-- [if mso]><i style="letter-spacing: 16px;mso-font-width:-100%;mso-text-raise:20pt">&nbsp;</i><![endif] -->
                         <span style="mso-text-raise:10pt;font-weight:bold;text-decoration:none;color:#ffffff">Подтвердить e-mail</span>
                         <!-- [if mso]><i style="letter-spacing: 16px;mso-font-width:-100%">&nbsp;</i><![endif] -->
